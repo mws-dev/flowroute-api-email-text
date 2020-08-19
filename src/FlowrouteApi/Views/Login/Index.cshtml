@@ -1,0 +1,21 @@
+﻿@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Login";
+    LoginModel login = new LoginModel();
+    if (TempData["LoginModel"] != null)
+    {
+        login = JsonConvert.DeserializeObject<LoginModel>((string)TempData["LoginModel"]);
+    }
+}
+
+
+    <div class="row">
+        <div class="col">
+            <h1>Login</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <partial name="~/Views/Partials/LoginForm.cshtml" model="login" />
+        </div>
+    </div>
