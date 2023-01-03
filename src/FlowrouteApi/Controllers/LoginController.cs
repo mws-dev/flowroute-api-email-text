@@ -66,6 +66,11 @@ namespace FlowrouteApi.Controllers
             else
             {
                 _signInManager.SignInAsync(user, false).Wait();
+                
+                if (Url.IsLocalUrl(m.ReturnUrl))
+                    return Redirect(m.ReturnUrl);
+                else
+                    return Redirect("/");
 
                 return Redirect(m.ReturnUrl);
             }
